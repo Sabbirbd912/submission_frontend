@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+// Define state and store user input-------------------------
 const SubmissionForm = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState('');
@@ -8,6 +9,8 @@ const SubmissionForm = () => {
     const handleChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+
+    // On-change behabiour Handle input Change and Submit -------------------------
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -20,7 +23,7 @@ const SubmissionForm = () => {
                 headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
                 body: JSON.stringify(formData),
             });
-
+            // Send post Request To Api -------------------------
             const result = await res.json();
 
             if (result.success) {
@@ -29,6 +32,7 @@ const SubmissionForm = () => {
             } else {
                 setStatus('Failed to save. Try again.');
             }
+            // if Api Data response Failed -------------------------
         } catch (error) {
             console.error(error);
             setStatus('Network or server error.');
@@ -37,6 +41,7 @@ const SubmissionForm = () => {
         }
     };
 
+    // Input Form for collect Data-------------------------
     return (
         <div className="card p-4  shadow-sm">
             <h4 className="text-center bg-secondary rounded text-white py-2 mb-3">Give Your info </h4>
