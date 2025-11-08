@@ -28,7 +28,7 @@ const SubmissionTable = () => {
   const filteredData = submissions.filter(sub =>
     sub.name.toLowerCase().includes(search.toLowerCase())
   );
-  // Pagination Logi ----------------------
+  // Pagination Log ----------------------
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
   const paginatedData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
