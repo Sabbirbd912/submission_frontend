@@ -4,8 +4,11 @@ import SubmissionForm from './components/SubmissionForm'
 import SubmissionTable from './components/SubmissionTable'
 
 function App() {
-  const dataPromise = fetch('http://localhost/https://sabbirbd.xyz/app/public/api/submissions')
-    .then(res => res.json())
+
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
+
+  const dataPromise = fetch(`${baseURL}/api/submissions`)
+    .then(res => res.json());
 
   return (
     <div className="app-container">
